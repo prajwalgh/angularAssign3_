@@ -1,0 +1,33 @@
+<button (click)="showStudents()"> Show Students</button>
+<h4>Student List is:</h4>
+<table *ngIf="students.length>0"> 
+    <thead><tr>
+        <th>Rollno</th>
+        <th>Name</th>
+        <th>No of Attempts</th>
+        <th>Percentage</th>
+        <th>Subjects</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of students">
+            <td >{{s.rollno}}</td>
+            <td >{{s.name | uppercase}}</td>
+            <td >{{s.noOfAttempts}}</td>
+            <td >{{s.percentage/100 | percent}}</td>
+            <td>
+                <ul *ngFor="let sub of s.subjectsLearning">
+                    <li>{{sub}}</li>
+                </ul>
+            </td>
+            <td>
+                <button class= "buttonDelete" (click)="deleteStudent(s.rollno)">Delete</button>&nbsp;
+                <button class="buttonUpdate"(click)="updateStudent(s)">Update</button>&nbsp;
+        
+            </td>
+            
+        </tr>  
+    </tbody>
+</table>
+<span [class]="colorClass">{{message}}</span>    
